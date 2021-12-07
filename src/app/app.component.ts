@@ -12,6 +12,7 @@ export class AppComponent {
   useLetters = false;
   useNumbers = false;
   useSymbols = false;
+  usingChars = false;
 
 
 onInputLength(value: string) {
@@ -19,6 +20,8 @@ onInputLength(value: string) {
 
     if (!isNaN(parsedValue)) {
       this.length = parsedValue;
+    } else {
+      this.length = 0;
     }
 }
 
@@ -55,6 +58,14 @@ onInputLength(value: string) {
       generatedPassword += validChars[index]
     }
     this.password = generatedPassword;
+  }
+
+  shouldUseChars() {
+    if (this.useLetters || this.useNumbers || this.useSymbols) {
+      this.usingChars = true;
+    } else {
+      this.usingChars = false;
+    }
   }
 
   onChangeUseLetters() {
