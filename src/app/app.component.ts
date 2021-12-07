@@ -6,12 +6,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-password = '';
-useLetters = false;
-useNumbers = false;
-useSymbols = false;
+
+  length = 0;
+  password = '';
+  useLetters = false;
+  useNumbers = false;
+  useSymbols = false;
+
+
+onInputLength(value: string) {
+    const parsedValue = parseInt(value);
+
+    if (!isNaN(parsedValue)) {
+      this.length = parsedValue;
+      console.log(this.length);
+    }
+}
 
   onButtonClick() {
+    console.log(`
+    About to generate a password with the next parameters:
+    Use Letters param: ${this.useLetters}
+    Use Numbers param: ${this.useNumbers}
+    Use Symbols param: ${this.useSymbols}
+    `)
     this.password = 'some Password';
   }
 
@@ -19,7 +37,7 @@ useSymbols = false;
     this.useLetters = !this.useLetters;
   }
   
-  onChangeUseNumbers() {
+  onChangeUseNumbers() { 
     this.useNumbers = !this.useNumbers;
   }
 

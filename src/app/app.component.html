@@ -2,7 +2,7 @@
 
 <div>
   <label>Enter lenght</label>
-  <input />
+  <input #box (keyup)="onInputLength(box.value)"/>
 </div>
 
 <div>
